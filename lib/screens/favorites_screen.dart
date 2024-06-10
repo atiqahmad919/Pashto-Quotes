@@ -9,7 +9,9 @@ class FavoritesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        centerTitle: true,
+        backgroundColor: Colors.deepPurple,
+        title: Text('Favorites', style: TextStyle(color: Colors.white)),
       ),
       body: FutureBuilder<List<Pmatals>>(
         future: Provider.of<DatabaseService>(context, listen: false)
