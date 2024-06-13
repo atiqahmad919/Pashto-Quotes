@@ -8,36 +8,28 @@ import '../services/database_service.dart';
 class CardWidget extends StatelessWidget {
   final Pmatals pmatal;
 
-  CardWidget({required this.pmatal});
+  const CardWidget({super.key, required this.pmatal});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4.0),
       child: Card(
-        // shape: BeveledRectangleBorder(
-        //   // borderRadius: BorderRadius.circular(12.0),
-        //   side: BorderSide(
-        //       // color: Colors.purple.shade50,
-        //       // width: 2.0,
-        //       ),
-        // ),
-        // decoration: BoxDecoration(
-        //   border: ,
-        //   borderRadius: BorderRadius.only(
-        //     topLeft: Radius.circular(20.0), // Adjust the values as needed
-        //     topRight: Radius.circular(20.0), // Adjust the values as needed
-        //   ),
-        // ),
         elevation: 3.0,
         child: SizedBox(
           height: 200,
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Expanded(flex: 3, child: Text(pmatal.matal, style: qStyle())),
+                Expanded(
+                    flex: 3,
+                    child: Text(
+                      pmatal.matal,
+                      style: qStyle(),
+                      textDirection: TextDirection.rtl,
+                    )),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -45,7 +37,9 @@ class CardWidget extends StatelessWidget {
                       icon: Icon(Icons.copy),
                       onPressed: () {
                         Clipboard.setData(ClipboardData(
-                            text: pmatal.matal + ' \nCreated by Atiq Ahmad'));
+                            text: 'د پښتو يو متل دې وايي:'
+                                '\n'
+                                '${pmatal.matal}'));
                         // ScaffoldMessenger.of(context).showSnackBar(
                         //     SnackBar(content: Text('Copied to clipboard')));
                       },
@@ -61,9 +55,10 @@ class CardWidget extends StatelessWidget {
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.share_outlined),
+                      icon: const Icon(Icons.share_outlined),
                       onPressed: () {
-                        Share.share(pmatal.matal);
+                        Share.share(
+                            'د پښتو يو متل دې وايي:' + '\n' + pmatal.matal);
                         // ScaffoldMessenger.of(context).showSnackBar(
                         //     SnackBar(content: Text('Copied to clipboard')));
                       },
@@ -80,5 +75,5 @@ class CardWidget extends StatelessWidget {
 }
 
 TextStyle qStyle() {
-  return TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
+  return const TextStyle(fontSize: 18, fontWeight: FontWeight.bold);
 }

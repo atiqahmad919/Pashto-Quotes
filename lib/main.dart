@@ -7,27 +7,32 @@ import 'widgets/navigation_bar.dart';
 import 'services/database_service.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => DatabaseService(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Mataluna',
         theme: ThemeData(
           primarySwatch: Colors.deepPurple,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        home: MyHomePage(),
+        home: const MyHomePage(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -35,9 +40,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   final List<Widget> _screens = [
-    HomeScreen(),
-    FavoritesScreen(),
-    ProfileScreen(),
+    const HomeScreen(),
+    const FavoritesScreen(),
+    const ProfileScreen(),
   ];
 
   void _onItemTapped(int index) {

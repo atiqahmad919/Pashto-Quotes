@@ -16,7 +16,7 @@ class CustomNavigationBar extends StatelessWidget {
       items: <Widget>[
         Icon(Icons.home, size: 30, color: Colors.white),
         Icon(Icons.favorite, size: 30, color: Colors.white),
-        Icon(Icons.person, size: 30, color: Colors.white),
+        Icon(Icons.info, size: 30, color: Colors.white),
       ],
       onTap: onTap,
     );

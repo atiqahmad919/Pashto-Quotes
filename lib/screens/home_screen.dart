@@ -5,13 +5,15 @@ import '../services/database_service.dart';
 import '../widgets/card_widget.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
-        title: Text(
+        title: const Text(
           'Home',
           style: TextStyle(color: Colors.white),
         ),
@@ -21,7 +23,7 @@ class HomeScreen extends StatelessWidget {
             Provider.of<DatabaseService>(context, listen: false).getPmatals(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
